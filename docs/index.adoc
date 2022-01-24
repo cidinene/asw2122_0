@@ -3,12 +3,15 @@
 //
 // ====================================
 
-= image:arc42-logo.png[arc42] Template
+= image:LogoASW.png[arc42] Radarin 0
 // toc-title definition MUST follow document title without blank line!
+:toc: left
 :toc-title: Table of Contents
+:imagesdir: ./images
+
 
 //additional style for arc42 help callouts
-ifdef::backend-html5[]
+ifdef::basebackend-html[]
 ++++
 <style>
 .arc42help {font-size:small; width: 14px; height: 16px; overflow: hidden; position: absolute; right: 0px; padding: 2px 0px 3px 2px;}
@@ -20,7 +23,7 @@ ifdef::backend-html5[]
 }
 </style>
 ++++
-endif::backend-html5[]
+endif::basebackend-html[]
 
 // configure EN settings for asciidoc
 include::src/config.adoc[]

@@ -81,7 +81,7 @@ jobs:
     - name: Docker-Compose Remote Deployment
       uses: fifsky/ssh-action@master
       with: 
-        host: ${{ secrets.DEPLOY_HOST }}
+        host: 3.237.84.143
         user: ${{ secrets.EXAMPLE_COM_SSH_USER }}
         key: ${{ secrets.EXAMPLE_COM_SSH_PRIVATE_KEY }}
         command: | 

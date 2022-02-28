@@ -52,9 +52,9 @@ jobs:
     - name: Publish to Registry
       uses: elgohr/Publish-Docker-Github-Action@3.04
       with:
-          name: pglez82/asw2122_0/webapp
+          name: cidinene/asw2122_0/webapp
           username: ${{ github.actor }}
-          password: ${{ secrets.DOCKER_PUSH_TOKEN }}
+          password: ${{ secrets.GITHUB_TOKEN }}
           registry: ghcr.io
           workdir: webapp
   docker-push-restapi:
@@ -66,9 +66,9 @@ jobs:
     - name: Publish to Registry
       uses: elgohr/Publish-Docker-Github-Action@3.04
       with:
-          name: pglez82/asw2122_0/restapi
+          name: cidinene/asw2122_0/restapi
           username: ${{ github.actor }}
-          password: ${{ secrets.DOCKER_PUSH_TOKEN }}
+          password: ${{ secrets.GITHUB_TOKEN }}
           registry: ghcr.io
           workdir: restapi  
   aws-docker-compose-deploy-steps: 

@@ -70,20 +70,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.DOCKER_PUSH_TOKEN }}
           registry: ghcr.io
-          workdir: restapi
-  docker-compose-deploy:
-    name: Deploy
-    runs-on: ubuntu-latest
-    needs: [docker-push-webapp,docker-push-restapi]
-    steps:
-    - uses: actions/checkout@v
-    - uses: alex-ac/github-action-ssh-docker-compose@master
-      name: Docker-Compose Remote Deployment
-      with:
-        ssh_host: 3.237.84.143
-        ssh_private_key: ${{ secrets.EXAMPLE_COM_SSH_PRIVATE_KEY }}
-        ssh_user: ${{ secrets.EXAMPLE_COM_SSH_USER }}
-        docker_compose_prefix: docker-compose.yml  
+          workdir: restapi  
   aws-docker-compose-deploy-steps: 
     name: Deploy over AWS using  SSH 
     runs-on: ubuntu-latest 

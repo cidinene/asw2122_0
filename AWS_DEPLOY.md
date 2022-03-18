@@ -138,13 +138,14 @@ In order for everything to work, we need to make some extra modifications in the
 
 const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
 This means that React will look for an environment variable and if it exists, it will take the apiEndPoint from there, chosing localhost in anyother case. Environment variables in React are picked up in building time and not in execution time. That means we need to pass this variable when we are building the docker image before deploying. For that we need to change the Dockerfile for the webapp and add the following lines before npm run build:
-
+```
 ARG API_URI="http://localhost:5000/api"
 ENV REACT_APP_API_URI=$API_URI
 Now this Dockerfile has an argument (with a default value) that will be create the REACT_APP_API_URI environment variable before building the production release of the webapp. We need to pass this argument in the GitHub Actions file, when building the webapp image, that is in the job docker-push-webapp.
 
 env:
    API_URI: http://${{ secrets.DEPLOY_HOST }}:5000/api
+```
 Lastly we need to configure CORS accept petitions from all the sources in the restapi. This means changing the cors initialization in restapi/server.ts to:
 
 app.use(cors());

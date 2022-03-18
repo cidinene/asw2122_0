@@ -15,6 +15,10 @@ jobs:
     - run: npm ci
     - run: npm test
     - uses: codecov/codecov-action@v2
+    - uses: sonarsource/sonarcloud-github-action@master
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
   unit-test-restapi:
     runs-on: ubuntu-latest
     defaults:

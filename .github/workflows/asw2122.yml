@@ -1,7 +1,7 @@
 name: CI for ASW212
 on:
   release:
-    types: [published]
+    types: [push]
 
 jobs:
   unit-test-webapp:

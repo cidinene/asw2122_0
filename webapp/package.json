@@ -44,6 +44,11 @@
       "last 1 safari version"
     ]
   },
+  "jest": {
+   "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
+  },
   "devDependencies": {
     "@types/expect-puppeteer": "^4.4.7",
     "@types/express": "^4.17.13",
@@ -56,6 +61,7 @@
     "start-server-and-test": "^1.14.0",
     "ts-jest": "^27.1.2",
     "ts-node-dev": "^1.1.8",
-    "react-scripts": "5.0.0"
+    "react-scripts": "5.0.0",
+    "jest-sonar-reporter": "^2.0.0"
   }
 }

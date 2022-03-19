@@ -6,6 +6,7 @@ import Alert from '@mui/material/Alert';
 import type { AlertColor } from '@mui/material/Alert';
 import {addUser} from '../api/api';
 
+
 type EmailFormProps = {
   OnUserListChange: () => void;
 }
@@ -27,6 +28,7 @@ function EmailForm(props: EmailFormProps): JSX.Element {
   
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    var test;
     let result:boolean = await addUser({name,email});
     if (result){
       setNotificationStatus(true);

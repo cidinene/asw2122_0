@@ -15,8 +15,8 @@ jobs:
     - run: npm test
     - uses: actions/upload-artifact@v1
       with:
-          name: coverage
-          path: bin
+          name: coverage-reports
+          path: webapp/coverage/*
     - uses: codecov/codecov-action@v2
   unit-test-restapi:
     runs-on: ubuntu-latest
@@ -41,8 +41,8 @@ jobs:
       - name: Download code coverage results
         uses: actions/download-artifact@v1
         with:
-          name: coverage
-          path: bin
+          name: coverage-reports
+          path: coverage
       - name: Analyze with SonarCloud
         uses: sonarsource/sonarcloud-github-action@master
         env:

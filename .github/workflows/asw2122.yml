@@ -19,7 +19,7 @@ jobs:
     - uses: actions/upload-artifact@v1
       with:
           name: coverage-reports
-          path: ./webapp/coverage/*
+          path: ${{ github.workspace }}/webapp/coverage/*
     - uses: codecov/codecov-action@v2
   unit-test-restapi:
     runs-on: ubuntu-latest

@@ -12,15 +12,11 @@ jobs:
       with:
         node-version: 16
     - run: npm ci
-    - run: npm test
-    - name: Coveralls
-      uses: coverallsapp/github-action@master
-      with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+    - run: npm test:coverage
     - uses: actions/upload-artifact@v1
       with:
           name: coverage-reports
-          path: ./test-reports/coverage/*
+          path: ./coverage/*
     - uses: codecov/codecov-action@v2
   unit-test-restapi:
     runs-on: ubuntu-latest

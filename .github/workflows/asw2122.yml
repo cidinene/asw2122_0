@@ -16,10 +16,10 @@ jobs:
     - name: machine ls
       run: ls ${{ github.workspace }}/webapp
 
-    - uses: actions/upload-artifact@v1
+    - uses: actions/upload-artifact@v3
       with:
           name: coverage-reports
-          path: ${{ github.workspace }}/webapp/coverage/*
+          path: ${{ github.workspace }}/webapp
     - uses: codecov/codecov-action@v2
   unit-test-restapi:
     runs-on: ubuntu-latest

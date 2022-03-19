@@ -14,7 +14,7 @@ jobs:
     - run: npm ci
     - run: npm test --coverage --watchAll
     - name: machine ls
-      run: ls ${{ github.workspace }}
+      run: ls ${{ github.workspace }}/webapp
 
     - uses: actions/upload-artifact@v1
       with:

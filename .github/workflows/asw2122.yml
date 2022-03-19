@@ -1,6 +1,5 @@
 name: CI for ASW212
 on: [push]
-
 jobs:
   unit-test-webapp:
     runs-on: ubuntu-latest
@@ -14,11 +13,11 @@ jobs:
         node-version: 16
     - run: npm ci
     - run: npm test
+    - uses: actions/upload-artifact@v1
+      with:
+          name: coverage
+          path: bin
     - uses: codecov/codecov-action@v2
-    - uses: sonarsource/sonarcloud-github-action@master
-      env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
   unit-test-restapi:
     runs-on: ubuntu-latest
     defaults:
@@ -42,14 +41,13 @@ jobs:
       - name: Download code coverage results
         uses: actions/download-artifact@v1
         with:
-          name: code-coverage-report
+          name: coverage
           path: bin
       - name: Analyze with SonarCloud
         uses: sonarsource/sonarcloud-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
   e2e-tests:
     needs: [unit-test-webapp, unit-test-restapi]
     runs-on: ubuntu-latest

@@ -28,7 +28,6 @@ function EmailForm(props: EmailFormProps): JSX.Element {
   
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    var test;
     let result:boolean = await addUser({name,email});
     if (result){
       setNotificationStatus(true);

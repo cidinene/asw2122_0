@@ -12,7 +12,7 @@ jobs:
       with:
         node-version: 16
     - run: npm ci
-    - run: npm test --coverage --coverageDirectory=webapp-coverage
+    - run: npm test --coverage  --watchAll
     - name: machine ls
       run: ls ${{ github.workspace }}/webapp
     - name: Analyze with SonarCloud
@@ -32,7 +32,7 @@ jobs:
       with:
         node-version: 16
     - run: npm ci
-    - run: npm test -coverage --coverageDirectory=restapi-coverage
+    - run: npm test -coverage --watchAll
     - name: Analyze with SonarCloud
       uses: sonarsource/sonarcloud-github-action@master
       env:

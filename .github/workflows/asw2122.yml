@@ -13,9 +13,8 @@ jobs:
         node-version: 16
     - run: npm ci
     - run: npm test --coverage --watchAll
-    - name: machine ls
-      run: ls ${{ github.workspace }}/webapp
-
+# - name: machine ls
+#   run: ls ${{ github.workspace }}/webapp
     - uses: actions/upload-artifact@v3
       with:
           name: coverage-reports

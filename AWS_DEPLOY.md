@@ -67,7 +67,7 @@ For our pourposes, well use Amazon Academy Labs to :
  - We'll connect at our EC2 instance with ssh using our key file: 
    ```
    ssh -i home.pem ec2-user@ec2-44-195-26-211.compute-1.amazonaws.com
-  ```
+   ``` 
   
   - At this point, we recommend create a [new user] (https://aws.amazon.com/premiumsupport/knowledge-center/new-user-accounts-linux-instance/) as docker-deploy and assign a new key pair docker_deploy.pem . Once connected, we'll update server and install docker and docker-compose
  
@@ -95,8 +95,8 @@ Now we have a capable machine of executing Docker containers. Let's configure ou
       <img width="700" alt="Summary Step" src="https://user-images.githubusercontent.com/29120610/156125816-a416b306-cde8-4566-b509-b6e4cbbf9f23.png">
 </p>
 -Now we are going to create a new docker-compose file called docker-compose-deploy.yaml that will contain the specific docker-compose instructions to deploy the application:
-```
-version: '3.5'
+
+```version: '3.5'
 services:
   restapi:
     image: ghcr.io/cidinene/asw2122_0/restapi:latest
@@ -108,7 +108,7 @@ services:
       - "80:3000"
     depends_on: 
       - restapi
- ```
+```
 Note that in this file we are using the images that we uploaded to the github registry instead of building them from scratch.
 
 Now we can configure our actions file to include a new job deploy that will be in charge of deploying this docker-compose file to the virtual machine. It will be executed after pushing the docker images to the registry.
@@ -135,20 +135,30 @@ This job , using SSH connection,  retrieves the docker compose file,  stops any 
 
 ## Extra modifications needed
 In order for everything to work, we need to make some extra modifications in the project. There are related with the restapi URL and how React works. In the webapp code we have in the src/api/api.ts file the following line:
-
+```
 const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
+```
+
 This means that React will look for an environment variable and if it exists, it will take the apiEndPoint from there, chosing localhost in anyother case. Environment variables in React are picked up in building time and not in execution time. That means we need to pass this variable when we are building the docker image before deploying. For that we need to change the Dockerfile for the webapp and add the following lines before npm run build:
+
 ```
 ARG API_URI="http://localhost:5000/api"
 ENV REACT_APP_API_URI=$API_URI
+```
+
+
 Now this Dockerfile has an argument (with a default value) that will be create the REACT_APP_API_URI environment variable before building the production release of the webapp. We need to pass this argument in the GitHub Actions file, when building the webapp image, that is in the job docker-push-webapp.
 
+```
 env:
    API_URI: http://${{ secrets.DEPLOY_HOST }}:5000/api
-```
-Lastly we need to configure CORS accept petitions from all the sources in the restapi. This means changing the cors initialization in restapi/server.ts to:
+ ```
 
+
+Lastly we need to configure CORS accept petitions from all the sources in the restapi. This means changing the cors initialization in restapi/server.ts to:
+```
 app.use(cors());
+```
 
 ## Creating a new release
 

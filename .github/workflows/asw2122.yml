@@ -62,7 +62,7 @@ jobs:
       with:
           name: cidinene/asw2122_0/webapp
           username: ${{ github.actor }}
-          password: ${{ secrets.DOCKER_PUSH_TOKEN }}
+          password: ${{ secrets.GITHUB_TOKEN }}
           registry: ghcr.io
           workdir: webapp
   docker-push-restapi:

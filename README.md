@@ -16,7 +16,7 @@ This project is a basic example of website using **React** with **Typescript** a
 ## Quick start guide
 <mark>In case you already have node.js and npm, make sure you update them before attempting to build the images</mark>
 
-If you want to execute the project you will need [git](https://git-scm.com/downloads), [Node.js and npm](https://www.npmjs.com/get-npm) and [Docker](https://docs.docker.com/get-docker/). Make sure the three of them are installed in your system. Download the project with `git clone https://github.com/pglez82/asw2122_0`. The fastest way to launch everything is with docker:
+If you want to execute the project you will need [git](https://git-scm.com/downloads), [Node.js and npm](https://www.npmjs.com/get-npm) and [Docker](https://docs.docker.com/get-docker/). Make sure the three of them are installed in your system. Download the project with `git clone https://github.com/cidinene/asw2122_0`. The fastest way to launch everything is with docker:
 ```bash
 docker-compose up --build
 ```
@@ -43,6 +43,6 @@ You should be able to access the application in [http://localhost:3000](http://l
 
 ## More information
 You can get more information about the respository in the other README files:
-- Documentation: https://github.com/pglez82/asw2122_0/tree/master/docs
-- Webapp: https://github.com/pglez82/asw2122_0/tree/master/webapp
-- Restapi: https://github.com/pglez82/asw2122_0/tree/master/restapi
+- Documentation: https://github.com/cidinene/asw2122_0/tree/master/docs
+- Webapp: https://github.com/cidinene/asw2122_0/tree/master/webapp
+- Restapi: https://github.com/cidinene/asw2122_0/tree/master/restapi

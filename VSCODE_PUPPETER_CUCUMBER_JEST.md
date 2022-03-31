@@ -37,7 +37,7 @@ npm list
         "cwd": "${workspaceRoot}/webapp",
         "protocol": "inspector",
         "console": "integratedTerminal",
-        "internalConsoleOptions": "neverOpen""
+        "internalConsoleOptions": "neverOpen"
       }
     ]
 }

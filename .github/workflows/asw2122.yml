@@ -1,5 +1,5 @@
 name: CI for ASW212
-on: [push]
+on: workflow_dispatch
 jobs:
   unit-test-webapp:
     runs-on: ubuntu-latest
